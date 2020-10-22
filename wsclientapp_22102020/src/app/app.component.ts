@@ -4,20 +4,22 @@ import { User } from './user';
 
 @Component({
   selector: 'my-app',
-  template: `<div>
-                    <p>Имя пользователя: {{user?.name}}</p>
-                    <p>Возраст пользователя: {{user?.age}}</p>
-               </div>`,
+  template: `<ul>
+                <li *ngFor="let user of users">
+                <p>Имя пользователя: {{user?.name}}</p>
+                <p>Возраст пользователя: {{user?.age}}</p>
+                </li>
+            </ul>`,
   providers: [HttpService]
 })
 export class AppComponent implements OnInit {
 
-  user: User;
+  users: User[] = [];
 
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
 
-    this.httpService.getData().subscribe((data: User) => this.user = data);
+    this.httpService.getData().subscribe(data => this.users = data["userList"]);
   }
 }
