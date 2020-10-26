@@ -9,7 +9,6 @@ export class HttpService {
 
   postData(user: User) {
 
-    const body = { name: user.name, age: user.age };
-    return this.http.post('http://localhost:3000/postuser', body);
+    return this.http.post('http://localhost:3000/postuser', user);
   }
 }
