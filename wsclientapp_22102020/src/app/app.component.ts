@@ -5,11 +5,11 @@ import { User } from './user';
 @Component({
   selector: 'my-app',
   template: `<ul>
-                <li *ngFor="let user of users">
-                <p>Имя пользователя: {{user?.name}}</p>
-                <p>Возраст пользователя: {{user?.age}}</p>
-                </li>
-            </ul>`,
+                <li *ngFor="let user of users">
+                <p>Имя пользователя: {{user?.name}}</p>
+                <p>Возраст пользователя: {{user?.age}}</p>
+                </li>
+            </ul>`,
   providers: [HttpService]
 })
 export class AppComponent implements OnInit {
@@ -20,6 +20,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    this.httpService.getData().subscribe(data => this.users = data["userList"]);
+    this.httpService.getUsers().subscribe(data => this.users = data);
   }
 }
